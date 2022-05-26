@@ -1,0 +1,49 @@
+﻿@model BookGallery.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Books</h1>
+
+
+
+<table class = "table">
+    <thead>
+
+        <tr>
+            <th>
+                @* displays the heading for the column ID *@
+                @Html.DisplayNameFor(model => model.Books.Last().Id)
+            </th>
+
+            
+            <th>
+                @* displays the heading for the column Name *@
+                @Html.DisplayNameFor(temp  => temp.Books.Last().Name)
+            </th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach(var item in Model.Books)
+        {
+            <tr>
+
+              
+                    @* displays the value *@
+                    <td>  @Html.DisplayFor(modelitem => item.Id)  </td>
+
+                    <td>  @Html.DisplayFor(modelitem => item.Name)  </td>
+
+                    <td>  <a asp-action = "Details" asp-controller = "Books" asp-route-id = "@item.Id"> Details </a> </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
